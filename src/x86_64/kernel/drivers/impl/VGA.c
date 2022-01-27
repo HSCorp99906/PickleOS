@@ -3,6 +3,7 @@
 
 void fillScreen(char** vga, unsigned char bg, unsigned char fg) {
     unsigned short attrib = (bg << 4) | (fg & 0x0F);
+    *vga = (char*)0xB8000;
 
     for (int i = 0; i < 5000; ++i) {
         **vga = ' ';
