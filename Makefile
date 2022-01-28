@@ -9,6 +9,7 @@ all:
 	gcc -c -m32 src/x86_64/kernel/memory/impl/memset.c -ffreestanding -fno-pie -fstack-protector -o obj/memset.o
 	gcc -c -m32 src/x86_64/kernel/memory/impl/GDT.c -ffreestanding -fno-pie -fstack-protector -o obj/gdt.o
 	gcc -c -m32 src/x86_64/kernel/process/impl/TSS.c -ffreestanding -fno-pie -fstack-protector -o obj/tss.o
+	gcc -c -m32 src/x86_64/kernel/interrupts/impl/exceptions.c -ffreestanding -fno-pie -fstack-protector -o obj/excp.o
 	nasm -felf32 src/x86_64/kernel/kernel.S -o objres/kernel.o
 	nasm -fbin src/x86_64/boot/bootloader.S -o bin/bootloader.bin
 	nasm -felf32 src/x86_64/kernel/memory/impl/GDT.S -o obj/gdtasm.o
