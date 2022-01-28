@@ -6,7 +6,6 @@
 
 #define IDT_MAX_ENTRIES 256
 
-#include <stddef.h>
 #include <stdint.h>
 #include "../drivers/IO.h"
 
