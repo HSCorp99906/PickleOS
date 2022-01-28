@@ -15,7 +15,7 @@ void panic(const char* const PANIC_MESSAGE) {
     outportb(0x3d4, 0x0a);
     outportb(0x3d5, 0x20);
     fillScreen(&vga_main, 0x4, 0xf);
-    kputs("*** kernel panic! ***", &vga_main, 2);
+    kputs("*** Kernel Panic! ***", &vga_main, 2);
     kputs(PANIC_MESSAGE, &vga_main, 0);
     __asm__ __volatile__("cli; hlt");
 }
@@ -24,7 +24,7 @@ void panicNoMsg() {
     outportb(0x3d4, 0x0a);
     outportb(0x3d5, 0x20);
     fillScreen(&vga_main, 0x4, 0xf);
-    kputs("*** kernel panic! ***", &vga_main, 2);
+    kputs("*** Kernel Panic! ***", &vga_main, 2);
     __asm__ __volatile__("cli; hlt");
 }
 
@@ -54,6 +54,8 @@ int _start() {
     set_idt_desc(0xF, float_ex, TRAP_GATE_FLAGS);
     __asm__ __volatile__("sti");
     unmask_kb_irq();
+
+    if (0 / 0 == 1);
 
     fillScreen(&vga_main, 0x1, 0xE); 
     draw_top_menu(MENU_ENTRY_1, 
