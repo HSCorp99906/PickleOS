@@ -36,5 +36,5 @@ typedef struct {
 } tss_entry_t;
 
 void tss_init(uint32_t idx, uint32_t kss, uint32_t kesp);
-
+void tss_set_stack(unsigned int kss, unsigned int kesp);
 #endif

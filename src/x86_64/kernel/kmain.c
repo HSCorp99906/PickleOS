@@ -5,6 +5,7 @@
 #include "drivers/keyboard.h"
 #include "drivers/graphics.h"
 #include "memory/GDT.h"
+#include "process/TSS.h"
 
 char* vga_main = (char*)0xB8000;
 
@@ -35,6 +36,7 @@ int _start() {
     draw_top_menu(MENU_ENTRY_1, 
             "UNUSED", "UNUSED", "UNUSED", "UNUSED");
 
+    unsigned int esp;
     gdt_install();
     return 0;
 }
