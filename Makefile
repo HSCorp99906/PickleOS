@@ -7,8 +7,10 @@ all:
 	gcc -c -m32 src/x86_64/kernel/interrupts/impl/IDT.c -ffreestanding -fno-pie -fstack-protector -o obj/idt.o
 	gcc -c -m32 src/x86_64/kernel/drivers/impl/graphics.c -ffreestanding -fno-pie -fstack-protector -o obj/gfx.o
 	gcc -c -m32 src/x86_64/kernel/memory/impl/memset.c -ffreestanding -fno-pie -fstack-protector -o obj/memset.o
+	gcc -c -m32 src/x86_64/kernel/memory/impl/GDT.c -ffreestanding -fno-pie -fstack-protector -o obj/gdt.o
 	nasm -felf32 src/x86_64/kernel/kernel.S -o objres/kernel.o
 	nasm -fbin src/x86_64/boot/bootloader.S -o bin/bootloader.bin
+	nasm -felf32 src/x86_64/kernel/memory/impl/GDT.S -o obj/gdtasm.o
 	i686-elf-ld -T link.ld objres/*.o obj/*.o --oformat binary -o bin/kernel.bin
 	cat bin/bootloader.bin bin/kernel.bin > bin/PickleOS.bin
 	sudo dd if=/dev/zero of=PickleOS.img bs=1024 count=1440

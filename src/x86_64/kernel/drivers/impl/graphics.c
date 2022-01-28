@@ -6,7 +6,7 @@ void draw_top_menu(unsigned short flags, ch arg1, ch arg2, ch arg3, ch arg4) {
     extern char* vga_main;
     vga_main = (char*)0xB8000;
 
-    kputs("-------------------------------", &vga_main, 1);
+    kputs("-----------------------------------------------", &vga_main, 1);
 
     if (flags & MENU_ENTRY_1) {
         kputs(arg1, &vga_main, 0);
@@ -42,5 +42,5 @@ void draw_top_menu(unsigned short flags, ch arg1, ch arg2, ch arg3, ch arg4) {
 
     vga_main -= 80 + 2;
 
-    kputs("-------------------------------", &vga_main, 2);
+    kputs("-----------------------------------------------", &vga_main, 2);
 }

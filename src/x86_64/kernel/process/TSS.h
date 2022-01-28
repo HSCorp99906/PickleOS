@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "../memory/memset.h"
+#include "../memory/GDT.h"
 
 typedef struct {
     uint32_t prevTss;

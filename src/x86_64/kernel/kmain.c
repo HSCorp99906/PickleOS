@@ -4,6 +4,7 @@
 #include "drivers/PIC.h"
 #include "drivers/keyboard.h"
 #include "drivers/graphics.h"
+#include "memory/GDT.h"
 
 char* vga_main = (char*)0xB8000;
 
@@ -33,5 +34,7 @@ int _start() {
     fillScreen(&vga_main, 0x1, 0xE); 
     draw_top_menu(MENU_ENTRY_1, 
             "UNUSED", "UNUSED", "UNUSED", "UNUSED");
+
+    gdt_install();
     return 0;
 }
