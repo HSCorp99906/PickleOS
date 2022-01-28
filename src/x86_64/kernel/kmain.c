@@ -55,8 +55,6 @@ int _start() {
     __asm__ __volatile__("sti");
     unmask_kb_irq();
 
-    if (0 / 0 == 1);
-
     fillScreen(&vga_main, 0x1, 0xE); 
     draw_top_menu(MENU_ENTRY_1, 
             "UNUSED", "UNUSED", "UNUSED", "UNUSED");
